@@ -9,7 +9,7 @@ class Home extends Component{
                 {/* <Header/> */}
                  {/* to Add Upcoming Movies heading to Home page */}
                 <h1 className="title">
-                    UpComming Movies
+                    Upcoming Movies
                 </h1>
             </div>
             
