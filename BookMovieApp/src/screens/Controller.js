@@ -1,5 +1,5 @@
 import React from "react";
-// import Home from "../screens/home/Home";
+import Home from "../screens/home/Home";
 // import Details from "../screens/details/Details";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from "../common/header/Header";
@@ -13,12 +13,11 @@ const Controller = () => {
     <Router>
       <div className="main-container">
       <Header/>
-        <h1>Hello</h1>
-        {/* <Route
+         <Route
           exact
           path="/"
           render={(props) => <Home {...props} baseUrl={baseUrl} />}
-        /> */}
+        /> 
         {/* <Route
           path="/movie/:id"
           render={(props) => <Details {...props} baseUrl={baseUrl} />}
