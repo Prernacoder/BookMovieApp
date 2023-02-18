@@ -7,7 +7,11 @@ export default function Header() {
   let name = "login";
   return (
     <div className='header1'>
+
+      {/* adding logo image */}
       <img src={logo} alt="" className="logo1" />
+
+      {/* Login ,Logout and BookShow Button */}
       <span className="buttons">
         <Button id="bookshow" color="primary" variant="contained">BOOK SHOW </Button>
         &nbsp; &nbsp;

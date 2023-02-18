@@ -1,39 +1,45 @@
-.header1{
-    background-color: #222;
-    
-    height:36px;
-    padding-top:8px;
-    padding-bottom:8px;
-    padding-right:32px;
-    padding-left:16px;
+/* Styling of header */
+.header1 {
+  background-color: #222;
+
+  height: 36px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 32px;
+  padding-left: 16px;
 }
-.logo1{
-    background-color: #ff7f7f;
-    height:35px;
-    float: left;
-    animation-name: rotation 8s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    
+
+/* styling of logo */
+.logo1 {
+  background-color: #ff7f7f;
+  height: 35px;
+  float: left;
+  animation-name: rotation 8s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+
 }
+
+/* Animation for logo */
 
 @media (prefers-reduced-motion: no-preference) {
-    .logo1 {
-      animation: App-logo-spin infinite 8s linear;
-    }
+  .logo1 {
+    animation: App-logo-spin infinite 8s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotateY(0deg);
   }
 
-  @keyframes App-logo-spin {
-    from {
-      transform: rotateY(0deg) ;
-    }
-    to {
-      transform:rotateY(360deg);
-    }
+  to {
+    transform: rotateY(360deg);
   }
+}
 
- .buttons{
+/* Styling for buttons */
+
+.buttons {
   float: right;
- }
-
- 
+}
