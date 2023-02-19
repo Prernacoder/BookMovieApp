@@ -12,7 +12,7 @@ const Controller = () => {
   return (
     <Router>
       <div className="main-container">
-      <Header/>
+       <Header/>
          <Route
           exact
           path="/"
