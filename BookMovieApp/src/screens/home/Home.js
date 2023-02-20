@@ -63,8 +63,8 @@ class Home extends Component {
         
         return (
             <div>
-                <Header page='homePage' />
-                {/* to Add Upcoming Movies heading to Home page */}
+                <Header page = 'homePage' />
+                 {/* to Add Upcoming Movies heading to Home page */}
                 <h1 className="title">
                     Upcoming Movies
                 </h1>

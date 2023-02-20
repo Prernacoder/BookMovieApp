@@ -16,11 +16,11 @@ const Controller = () => {
           path="/"
           render={(props) => <Home {...props} baseUrl={baseUrl} />}
         /> 
-         <Route 
+        {/* <Route
           path="/movie/:id"
           // path="/"
           render={(props) => <Details {...props} baseUrl={baseUrl} />}
-        /> 
+        /> */}
        
         <Route
           path="/bookshow/:id"
