@@ -4,4 +4,29 @@
     padding: 8px;
     text-align: center;
     font-size: 1rem;
+}.title {
+    background: #ff9999;
+    margin: 0px;
+    padding: 8px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.MuiGridList-root-30 {
+    display: flex;
+    padding: 0;
+    flex-wrap: nowrap;
+    overflow-y: auto;
+    list-style: none;
+}
+
+.grid-component {
+    display:flex;
+    flex-wrap: nowrap;
+    overflow: scroll;
+}
+
+.grid-tile {
+    flex-wrap: nowrap;
+    background-size: cover;
 }
