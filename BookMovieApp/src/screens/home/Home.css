@@ -6,21 +6,23 @@
     font-size: 1rem;
 }
 
-.MuiGridList-root-30 {
-    display: flex;
-    padding: 0;
-    flex-wrap: nowrap;
-    overflow-y: auto;
-    list-style: none;
-}
-
 .grid-component {
-    display:flex;
-    flex-wrap: nowrap;
-    overflow: scroll;
+    display:flexbox;
+    justify-items: center;
+    overflow-y: hidden;
+    overflow-x: scroll;
 }
 
 .grid-tile {
-    flex-wrap: nowrap;
-    background-size: cover;
+    display:inline-flex;
+     flex-flow: nowrap;
+    column-count: 6;
+   
+    
+}
+.Movie-Poster{
+    background-size: contain;
+    display: grid;
+    flex-wrap:inherit;
+    height: 250;
 }

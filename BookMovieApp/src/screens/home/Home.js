@@ -5,8 +5,7 @@ import "./Home.css";
 import { GridList } from "@material-ui/core";
 import { GridListTile } from "@material-ui/core";
 import { GridListTileBar } from "@material-ui/core";
-
-
+import { Link } from 'react-router-dom';
 
 class Home extends Component {
     render() {
@@ -15,19 +14,19 @@ class Home extends Component {
                 id: 1,
                 title: "The GodFather",
                 ReleaseDate: "2-02-2023",
-                poster_url:"https://m.media-amazon.com/images/I/61jDsQrXfMS._SY450_.jpg"
+                poster_url: "https://m.media-amazon.com/images/I/61jDsQrXfMS._SY450_.jpg"
             },
             {
                 id: 2,
                 title: "The Dark Knight",
                 ReleaseDate: "27-02-2023",
-                poster_url: "https://m.media-amazon.com/images/I/618P6Rg+EoL._SY550_.jpg" 
+                poster_url: "https://m.media-amazon.com/images/I/618P6Rg+EoL._SY550_.jpg"
             },
             {
                 id: 3,
                 title: "Inception",
                 ReleaseDate: "3-03-2023",
-                poster_url: "https://m.media-amazon.com/images/I/618P6Rg+EoL._SY550_.jpg" 
+                poster_url: "https://m.media-amazon.com/images/I/618P6Rg+EoL._SY550_.jpg"
             },
             {
                 id: 4,
@@ -37,15 +36,15 @@ class Home extends Component {
             },
             {
                 id: 5,
-                title: "Top Gun",
+                title: "Interstellar",
                 ReleaseDate: "28-02-2023",
-                poster_url: "https://www.amazon.in/Midnight-Works-Maverick-Poster-inch/dp/B0B414TRWF?ref_=ast_sto_dp"
+                poster_url: "https://m.media-amazon.com/images/I/71x2rWPgb7L._SY741_.jpg"
             },
             {
                 id: 6,
                 title: "The Nun",
                 ReleaseDate: "26-03-2023",
-                poster_url:"https://m.media-amazon.com/images/I/81XFGLWb2vS._SY450_.jpg"
+                poster_url: "https://m.media-amazon.com/images/I/81XFGLWb2vS._SY450_.jpg"
             },
             {
                 id: 7,
@@ -60,22 +59,25 @@ class Home extends Component {
                 poster_url: "https://th.bing.com/th/id/OIP.CvgSjcND32Exm8V2TSfAHQAAAA?w=182&h=267&c=7&r=0&o=5&dpr=1.3&pid=1.7"
             },
         ]
-        
+
         return (
             <div>
-                <Header page = 'homePage' />
-                 {/* to Add Upcoming Movies heading to Home page */}
+                <Header page='homePage' />
+                {/* to Add Upcoming Movies heading to Home page */}
                 <h1 className="title">
                     Upcoming Movies
                 </h1>
                 {/*Adding Movie List*/}
-                <GridList cols={6} className = "grid-component" >
-                    {Movies.map(tile => (
-                        <GridListTile cell-height={250} key={Movies.id} className="grid-tile">
-                            <img src={Movies.poster_url} alt={Movies.title} />
-                            <GridListTileBar title={Movies.title} />
-                        </GridListTile>
-                    ))}
+                <GridList cols={6}  className="grid-component"  >
+                    {Movies.map(tile => {
+                        return <Link to="/movie/:id">
+                            <GridListTile cell-height={250} key={tile.id} className="grid-tile">
+                                <img src={tile.poster_url} alt={tile.title} className='Movie-Poster' />
+                                <GridListTileBar title={tile.title} />
+                            </GridListTile>
+                        </Link>
+                         
+                    })}
                 </GridList>
             </div>
 
