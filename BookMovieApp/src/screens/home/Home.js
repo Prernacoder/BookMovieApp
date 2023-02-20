@@ -6,7 +6,7 @@ class Home extends Component{
     render(){
         return(
             <div>
-                <Header/>
+                <Header page = 'homePage' />
                  {/* to Add Upcoming Movies heading to Home page */}
                 <h1 className="title">
                     Upcoming Movies

@@ -4,7 +4,7 @@ import Header from "../../common/header/Header";
 export default function Details() {
   return (
     <div>
-      <Header/>
+      <Header page='detailsPage' />
     </div>
   )
 }

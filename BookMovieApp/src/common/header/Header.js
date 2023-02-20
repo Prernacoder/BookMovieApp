@@ -6,7 +6,7 @@ import logo from "../../assets/logo.svg"
 import { Button } from '@material-ui/core';
 
 
-export default function Header() {
+export default function Header(props) {
   let name = "login";
 
   // declare a new state variable for modal open
@@ -21,22 +21,41 @@ export default function Header() {
   const handleClose = () => {
     setOpen(false);
   };
- 
-  return (
-    <div className='header1'>
+  if (props.page === 'detailsPage') {
+    return (
+      <div className='header1'>
 
-      {/* adding logo image */}
-      <img src={logo} alt="" className="logo1" />
+        {/* adding logo image */}
+        <img src={logo} alt="" className="logo1" />
 
-      {/* Login ,Logout and BookShow Button */}
-      <span className="buttons">
-        <Button id="bookshow" color="primary" variant="contained" >BOOK SHOW </Button>
-        &nbsp; &nbsp;
-        <Button id="login" color="default" variant="contained" onClick ={handleOpen}> {name} </Button></span>
-        
+        {/* Login ,Logout and BookShow Button */}
+        <span className="buttons">
+          <Button id="bookshow" color="primary" variant="contained" >BOOK SHOW </Button>
+          &nbsp; &nbsp;
+          <Button id="login" color="default" variant="contained" onClick={handleOpen}> {name} </Button></span>
+
         {/*  display the modal and pass props */}
-      <ModalDialog open={open} handleClose={handleClose} />
+        <ModalDialog open={open} handleClose={handleClose} />
 
-    </div>
-  )
+      </div>
+    )
+  }
+  else {
+    return (
+      <div className='header1'>
+
+        {/* adding logo image */}
+        <img src={logo} alt="" className="logo1" />
+
+        {/* Login ,Logout and BookShow Button */}
+        <span className="buttons">
+          <Button id="login" color="default" variant="contained" onClick={handleOpen}> {name} </Button>
+        </span>
+
+        {/*  display the modal and pass props */}
+        <ModalDialog open={open} handleClose={handleClose} />
+
+      </div>
+    )
+  }
 }
