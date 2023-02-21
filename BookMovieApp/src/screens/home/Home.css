@@ -1,7 +1,58 @@
-.title{
+.title {
     background: #ff9999;
     margin: 0px;
     padding: 8px;
     text-align: center;
     font-size: 1rem;
 }
+
+.root {
+    display: flex;
+    flex-wrap: wrap;
+    justify-Content: 'space-around';
+    overflow: 'hidden';
+}
+
+.gridList{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-box-orient: horizontal; 
+    -moz-box-orient: horizontal;
+    box-orient: horizontal;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    transform: translateZ(0);
+}
+
+.titleBar {
+    background: -moz-linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%);
+}
+
+.ImageSettings{
+    background-image: -webkit-image-set();
+}
+
+/* .grid-component {
+    display:flexbox;
+    justify-items: center;
+    overflow-y: hidden;
+    overflow-x: scroll;
+}
+
+.grid-tile {
+    display:inline-flex;
+     flex-flow: nowrap;
+    column-count: 6;
+   
+    
+}
+.Movie-Poster{
+    background-size: contain;
+    display: grid;
+    flex-wrap:inherit;
+    height: 250;
+} */
