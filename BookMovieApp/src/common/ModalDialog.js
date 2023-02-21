@@ -26,10 +26,10 @@ const [value,setValue]=React.useState(0);
           <Tab label="Register" />
         </Tabs>
       
-      <TabPanel value={value} index={0}>Item 1 detail</TabPanel>
+      <TabPanel value={value} index={0}><LoginForm handleClose={handleClose} /></TabPanel>
       <TabPanel value={value} index={1}>Item 2 details</TabPanel>
        
-      <LoginForm handleClose={handleClose} />
+      
 
     </Dialog>
   );

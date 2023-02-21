@@ -1,20 +1,32 @@
 import React from 'react'
 import { Button, Typography } from '@material-ui/core';
 
-export default function LoginForm() {
-  return (
-    <div>
-
-      <form action="" className="loginform">
-        <input id="username" className='input-control' type='text' name='name' /><br /><br />
-        <input id="password" className='input-control' type='text' name='password' /><br /><br />
-
-        <Typography align='center'>
+class Form extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { username: '' };
+  }
+  changeEventHandler = (event) => {
+    this.setState({username: event.target.value});
+  }
+  render() {
+    return (
+      <form>
+      <h1>Hello There!{this.state.username}</h1>
+      <p>Can I know your name?</p>
+      <input
+        type='text'
+        onChange={this.changeEventHandler}
+      />
+      <Typography align='center'>
           <Button id="loginbutton" color="primary" variant="contained" > Login </Button>
           <br />
         </Typography>
+      
+    
       </form>
-
-    </div>
-  )
+    );
+  }
 }
+
+export default Form;
