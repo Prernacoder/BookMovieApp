@@ -4,6 +4,7 @@ import ModalDialog from '../ModalDialog';
 import "./Header.css"
 import logo from "../../assets/logo.svg"
 import { Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 
 export default function Header(props) {
@@ -30,7 +31,7 @@ export default function Header(props) {
 
         {/* Login ,Logout and BookShow Button */}
         <span className="buttons">
-          <Button id="bookshow" color="primary" variant="contained" >BOOK SHOW </Button>
+          <Link to = "/bookshow/:id"><Button id="bookshow" color="primary" variant="contained" >BOOK SHOW </Button></Link>
           &nbsp; &nbsp;
           <Button id="login" color="default" variant="contained" onClick={handleOpen}> {name} </Button></span>
 
