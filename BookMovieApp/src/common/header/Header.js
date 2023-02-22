@@ -31,7 +31,7 @@ export default function Header(props) {
 
         {/* Login ,Logout and BookShow Button */}
         <span className="buttons">
-         <Link to = "/bookshow/:id"><Button id="bookshow" color="primary" variant="contained" >BOOK SHOW </Button></Link> 
+         <Link to = "/bookshow/:id"><Link to = "/bookshow/:id"><Button id="bookshow" color="primary" variant="contained" >BOOK SHOW </Button></Link></Link> 
           &nbsp; &nbsp;
           <Button id="login" color="default" variant="contained" onClick={handleOpen}> {name} </Button></span>
 

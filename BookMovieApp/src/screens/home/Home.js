@@ -86,11 +86,28 @@ class Home extends Component {
         return (
 
             <div>
-                <Header page='homePage' />
-                {/* to Add Upcoming Movies heading to Home page */}
+                <Header page = 'homePage' />
+                 {/* to Add Upcoming Movies heading to Home page */}
                 <h1 className="title">
                     Upcoming Movies
                 </h1>
+                {/*Adding Movie List*/}
+                <div className="root">
+                    <GridList cols={6} className="gridList"  >
+                        {Movies.map(tile => {
+                            return <Link to="/movie/:id">
+                                <GridListTile cell-height={250} key={tile.id} >
+                                    <img src={tile.poster_url} alt={tile.title} className = "ImageSettings" />
+                                    <GridListTileBar
+                                        title={tile.title}
+                                        className="titleBar"
+                                    />
+                                </GridListTile>
+                            </Link>
+
+                        })}
+                    </GridList>
+                </div>
                 {/*Adding Movie List*/}
                 <div className="root">
                     <GridList cols={6} className="gridList" row-height = {250} >
@@ -109,7 +126,7 @@ class Home extends Component {
                     </GridList>
                 </div>
             </div>
-
+            
         );
     }
 }
