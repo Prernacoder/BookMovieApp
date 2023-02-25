@@ -1,37 +1,46 @@
 import React, { Component } from "react";
+// import { useState } from "react";
 import Header from "../../common/header/Header";
 import "./Home.css";
 // import { Card } from '@material-ui/core';
-// import { makeStyles } from '@material-ui/core/styles';
+// import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 import { GridList } from "@material-ui/core";
 import { GridListTile } from "@material-ui/core";
 import { GridListTileBar } from "@material-ui/core";
 import { Link } from 'react-router-dom';
 
-// const useStyles = makeStyles((theme) => ({
+// const styles = (theme) => ({
 //     root: {
-//         display: 'flex',
-//         flexWrap: 'wrap',
-//         justifyContent: 'space-around',
-//         overflow: 'hidden',
-//         backgroundColor: theme.palette.background.paper,
+//         flexGrow: 1,
+//         // backgroundColor: theme.palette.background.paper,
 //     },
 //     gridList: {
 //         flexWrap: 'nowrap',
 //         transform: 'translateZ(0)',
+//         innerHeight:"250",
+//         width: "100%",
+//         overflowY: 'none',
+//         overflowX: 'scroll'
 //     },
 //     title: {
-//         color: theme.palette.primary.light,
+//         // color: theme.palette.primary.light,
 //     },
 //     titleBar: {
 //         background:
 //             'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
 //     },
-// }));
+// });
+
+
+
+
+
+
 
 class Home extends Component {
     render() {
-        // const styleClasses = useStyles();
+        // const styleClasses = styles();
         const Movies = [
             {
                 id: 1,
@@ -81,53 +90,50 @@ class Home extends Component {
                 ReleaseDate: "28-02-2023",
                 poster_url: "https://th.bing.com/th/id/OIP.CvgSjcND32Exm8V2TSfAHQAAAA?w=182&h=267&c=7&r=0&o=5&dpr=1.3&pid=1.7"
             },
+            {
+                id: 9,
+                title: "Interstellar",
+                ReleaseDate: "28-02-2023",
+                poster_url: "https://m.media-amazon.com/images/I/71x2rWPgb7L._SY741_.jpg"
+            },
+            {
+                id: 10,
+                title: "The Nun",
+                ReleaseDate: "26-03-2023",
+                poster_url: "https://m.media-amazon.com/images/I/81XFGLWb2vS._SY450_.jpg"
+            }
         ]
-
         return (
-
             <div>
-                <Header page = 'homePage' />
-                 {/* to Add Upcoming Movies heading to Home page */}
+                <Header page='homePage' />
+                {/* to Add Upcoming Movies heading to Home page */}
                 <h1 className="title">
                     Upcoming Movies
                 </h1>
                 {/*Adding Movie List*/}
-                <div className="root">
-                    <GridList cols={6} className="gridList"  >
+                <div className= 'root' style={{display:"flex", flexWrap:"wrap"}} >
+                    <GridList className='gridList' cellHeight={250} cols={6} style={{flexWrap:'nowrap', alignItems:'baseline', overflowX:'scroll',overflowY:'hidden'}} >
                         {Movies.map(tile => {
                             return <Link to="/movie/:id">
-                                <GridListTile cell-height={250} key={tile.id} >
-                                    <img src={tile.poster_url} alt={tile.title} className = "ImageSettings" />
+                                <GridListTile key={tile.id} >
+                                    <img src={tile.poster_url} alt={tile.title} className="ImageSettings" />
                                     <GridListTileBar
                                         title={tile.title}
-                                        className="titleBar"
+                                        // styleClasses={{
+                                        //     root: styleClasses.titleBar,
+                                        //     tile: styleClasses.title
+                                        // }}
                                     />
                                 </GridListTile>
                             </Link>
-
-                        })}
-                    </GridList>
-                </div>
-                {/*Adding Movie List*/}
-                <div className="root">
-                    <GridList cols={6} className="gridList" row-height = {250} >
-                        {Movies.map(tile => {
-                            return <Link to="/movie/:id">
-                                <GridListTile cell-height={250} key={tile.id} >
-                                    <img src={tile.poster_url} alt={tile.title} className = "ImageSettings" />
-                                    <GridListTileBar
-                                        title={tile.title}
-                                        className="titleBar"
-                                    />
-                                </GridListTile>
-                            </Link>
-
                         })}
                     </GridList>
                 </div>
             </div>
-            
+
         );
     }
 }
-export default Home;
+
+
+export default Home; withStyles();
