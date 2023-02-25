@@ -8,49 +8,49 @@ import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
 
 const ModalDialog = ({ open, handleClose }) => {
-const [value,setValue]=React.useState(0);
- const handleTabs =(e,val)=>{
-  console.warn(val);
-  setValue(val);
- }
-  return (
-    // props received from App.js
+      const [value,setValue]=React.useState(0);
+      const handleTabs =(e,val)=>{
+        console.warn(val);
+        setValue(val);
+      }
+      return (
+        // props received from App.js
 
-    <Dialog open={open} onClose={handleClose}>
-      
+        <Dialog open={open} onClose={handleClose}>
+          
 
-      {/* Tab changing */}
+          {/* Tab changing */}
 
-      
-        <Tabs value={value} onChange ={handleTabs}>
-          <Tab label="LOGIN" />
-          <Tab label="Register" />
-        </Tabs>
-      
-      <TabPanel value={value} index={0}><LoginForm handleClose={handleClose} /></TabPanel>
-      <TabPanel value={value} index={1}><RegisterForm handleClose={handleClose} /></TabPanel>
-       
-      
+          
+            <Tabs value={value} onChange ={handleTabs}>
+              <Tab label="LOGIN" />
+              <Tab label="Register" />
+            </Tabs>
+          
+          <TabPanel value={value} index={0}><LoginForm handleClose={handleClose} /></TabPanel>
+          <TabPanel value={value} index={1}><RegisterForm handleClose={handleClose} /></TabPanel>
+          
+          
 
-    </Dialog>
+        </Dialog>
   );
 };
 
 function TabPanel(props)
 {
-const {children,value,index}=props
+   const {children,value,index}=props
 
   
-  return(
-    <div>
-      {
-        value ===index &&
-        (<h1>{children}</h1>)
-      }
-      
-      
-      </div>
-  )
+    return(
+      <div>
+        {
+          value ===index &&
+          (<h1>{children}</h1>)
+        }
+        
+        
+        </div>
+    )
 }
 
 export default ModalDialog;
