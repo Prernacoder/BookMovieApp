@@ -10,37 +10,8 @@ import { GridListTile } from "@material-ui/core";
 import { GridListTileBar } from "@material-ui/core";
 import { Link } from 'react-router-dom';
 
-// const styles = (theme) => ({
-//     root: {
-//         flexGrow: 1,
-//         // backgroundColor: theme.palette.background.paper,
-//     },
-//     gridList: {
-//         flexWrap: 'nowrap',
-//         transform: 'translateZ(0)',
-//         innerHeight:"250",
-//         width: "100%",
-//         overflowY: 'none',
-//         overflowX: 'scroll'
-//     },
-//     title: {
-//         // color: theme.palette.primary.light,
-//     },
-//     titleBar: {
-//         background:
-//             'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
-//     },
-// });
-
-
-
-
-
-
-
 class Home extends Component {
     render() {
-        // const styleClasses = styles();
         const Movies = [
             {
                 id: 1,
@@ -90,18 +61,6 @@ class Home extends Component {
                 ReleaseDate: "28-02-2023",
                 poster_url: "https://th.bing.com/th/id/OIP.CvgSjcND32Exm8V2TSfAHQAAAA?w=182&h=267&c=7&r=0&o=5&dpr=1.3&pid=1.7"
             },
-            {
-                id: 9,
-                title: "Interstellar",
-                ReleaseDate: "28-02-2023",
-                poster_url: "https://m.media-amazon.com/images/I/71x2rWPgb7L._SY741_.jpg"
-            },
-            {
-                id: 10,
-                title: "The Nun",
-                ReleaseDate: "26-03-2023",
-                poster_url: "https://m.media-amazon.com/images/I/81XFGLWb2vS._SY450_.jpg"
-            }
         ]
         return (
             <div>
@@ -111,19 +70,13 @@ class Home extends Component {
                     Upcoming Movies
                 </h1>
                 {/*Adding Movie List*/}
-                <div className= 'root' style={{display:"flex", flexWrap:"wrap"}} >
-                    <GridList className='gridList' cellHeight={250} cols={6} style={{flexWrap:'nowrap', alignItems:'baseline', overflowX:'scroll',overflowY:'hidden'}} >
+                <div className= 'root' style={{display:"flex", flexWrap:"wrap", flexGrow:1}} >
+                    <GridList className='gridList' cellHeight={250} cols={6} style={{display:'flex-Box', flexWrap:'nowrap', alignItems:'baseline', overflowX:'scroll',overflowY:'hidden'}} >
                         {Movies.map(tile => {
                             return <Link to="/movie/:id">
-                                <GridListTile key={tile.id} >
-                                    <img src={tile.poster_url} alt={tile.title} className="ImageSettings" />
-                                    <GridListTileBar
-                                        title={tile.title}
-                                        // styleClasses={{
-                                        //     root: styleClasses.titleBar,
-                                        //     tile: styleClasses.title
-                                        // }}
-                                    />
+                                <GridListTile key={tile.id} style={{ width:'278px', height:'250px', paddingBottom:0}}>
+                                    <img src={tile.poster_url} alt={tile.title} style={{width:'256px', height:'300px'}} />
+                                    <GridListTileBar title={tile.title} style={{width:'256px'}} />
                                 </GridListTile>
                             </Link>
                         })}
