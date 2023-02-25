@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Typography, FormControl, Input, InputLabel } from '@material-ui/core';
-import "./LoginForm.css";
+import "./Form.css";
 
 
 class Form extends React.Component {

@@ -5,6 +5,7 @@ import { Tab, Tabs } from '@material-ui/core';
 // import { formatMs } from '@material-ui/core/styles/transitions';
 
 import LoginForm from './LoginForm';
+import RegisterForm from './RegisterForm';
 
 const ModalDialog = ({ open, handleClose }) => {
 const [value,setValue]=React.useState(0);
@@ -27,7 +28,7 @@ const [value,setValue]=React.useState(0);
         </Tabs>
       
       <TabPanel value={value} index={0}><LoginForm handleClose={handleClose} /></TabPanel>
-      <TabPanel value={value} index={1}>Item 2 details</TabPanel>
+      <TabPanel value={value} index={1}><RegisterForm handleClose={handleClose} /></TabPanel>
        
       
 
