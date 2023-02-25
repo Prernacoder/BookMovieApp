@@ -3,7 +3,7 @@ import { Button, Typography, FormControl, Input, InputLabel } from '@material-ui
 import "./Form.css";
 
 
-class Form extends React.Component {
+function RegisterForm()  {
   // constructor(props) {
   //   super(props);
   //   this.state = { username: '' };
@@ -11,7 +11,7 @@ class Form extends React.Component {
   // changeEventHandler = (event) => {
   //   this.setState({ username: event.target.value });
   // }
-  render() {
+  
     return (
 
       <div>
@@ -99,7 +99,7 @@ class Form extends React.Component {
 
 
     );
-  }
+  
 }
 
-export default Form;
+export default RegisterForm;
