@@ -2,13 +2,15 @@ import React, { Component } from "react";
 // import { useState } from "react";
 import Header from "../../common/header/Header";
 import "./Home.css";
-// import { Card } from '@material-ui/core';
+// import { Card, CardContent, Typography, FormControl, Input, InputLabel, Button } from '@material-ui/core';
+// import { MenuItem, Checkbox, ListItemText, Select, TextField } from "@material-ui/core/MenuItem";
 // import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { GridList } from "@material-ui/core";
 import { GridListTile } from "@material-ui/core";
 import { GridListTileBar } from "@material-ui/core";
 import { Link } from 'react-router-dom';
+
 
 class Home extends Component {
     render() {
@@ -70,13 +72,13 @@ class Home extends Component {
                     Upcoming Movies
                 </h1>
                 {/*Adding Movie List*/}
-                <div className= 'root' style={{display:"flex", flexWrap:"wrap", flexGrow:1}} >
-                    <GridList className='gridList' cellHeight={250} cols={6} style={{display:'flex-Box', flexWrap:'nowrap', alignItems:'baseline', overflowX:'scroll',overflowY:'hidden'}} >
+                <div className='root' style={{ display: "flex", flexWrap: "wrap", flexGrow: 1 }} >
+                    <GridList className='gridList' cellHeight={250} cols={6} style={{ display: 'flex-Box', flexWrap: 'nowrap', alignItems: 'baseline', overflowX: 'scroll', overflowY: 'hidden' }} >
                         {Movies.map(tile => {
                             return <Link to="/movie/:id">
-                                <GridListTile key={tile.id} style={{ width:'278px', height:'250px', paddingBottom:0}}>
-                                    <img src={tile.poster_url} alt={tile.title} style={{width:'256px', height:'300px'}} />
-                                    <GridListTileBar title={tile.title} style={{width:'256px'}} />
+                                <GridListTile key={tile.id} style={{ width: '278px', height: '250px', paddingBottom: 0 }}>
+                                    <img src={tile.poster_url} alt={tile.title} style={{ width: '256px', height: '300px' }} />
+                                    <GridListTileBar title={tile.title} style={{ width: '256px' }} />
                                 </GridListTile>
                             </Link>
                         })}
