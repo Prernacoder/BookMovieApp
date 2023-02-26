@@ -21,6 +21,8 @@ const customStyles = {
   },
 };
 
+
+//Tab Container Function
 //Tab Container Function
 const TabContainer = function (props) {
   return (
@@ -31,6 +33,7 @@ const TabContainer = function (props) {
 };
 
 //Functional Header Component
+
 function Header(props) {
 
   //Differenet States to be used
@@ -59,7 +62,6 @@ function Header(props) {
   );
 
   //Handler to open the modal
-
   const openModalHandler = () => {
     setModalIsOpen(true);
     setValue(0);
@@ -78,7 +80,7 @@ function Header(props) {
     setContactRequired("Nodisplay");
     setContact("");
   };
-
+ 
   //Handle to close the modal 
   const closeModalHandler = () => {
     setModalIsOpen(false);
@@ -121,6 +123,8 @@ function Header(props) {
     }
   };
 
+
+  
   const inputUsernameChangeHandler = (event) => {
     setUsername(event.target.value);
   };
@@ -198,7 +202,6 @@ function Header(props) {
     setContact(event.target.value);
   };
 
-  //Logout Functionality
   const logoutHandler = (event) => {
     sessionStorage.removeItem("uuid");
     sessionStorage.removeItem("access-token");
@@ -254,8 +257,6 @@ function Header(props) {
           ""
         )}
       </header>
-
-      {/* Login logout Modal */}
       <Modal
         ariaHideApp={false}
         isOpen={modalIsOpen}
@@ -399,11 +400,7 @@ function Header(props) {
             )}
             <br />
             <br />
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={registerClickHandler}
-            >
+            <Button variant="contained"color="primary" onClick={registerClickHandler} >
               REGISTER
             </Button>
           </TabContainer>
