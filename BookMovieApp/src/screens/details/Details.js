@@ -1,19 +1,32 @@
 import {
-  GridList,
-  GridListTile,
-  GridListTileBar,
-  Typography,
+  GridList, GridListTile, GridListTileBar,
+  Typography
 } from "@material-ui/core";
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "../../common/header/Header";
 import YouTube from "react-youtube";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
-
 import "./Details.css";
 
-const starIconsInitial = [
-  {
+const movieInitial = {
+  genres: [],
+  trailer_url: "",
+  artists: [],
+};
+
+const opts = {
+  height: "300",
+  width: "700",
+  playerVars: {
+    autoplay: 1,
+  },
+};
+
+function Details(props) {
+  const [movie, setMovie] = useState(movieInitial);
+  const [ratingGiven, setRatingGiven] = useState(false);
+  const [fiveStars, setFiveStars] = useState([{
     id: 1,
     stateId: "star1",
     color: "black",
@@ -37,43 +50,14 @@ const starIconsInitial = [
     id: 5,
     stateId: "star5",
     color: "black",
-  },
-];
+  }]);
+  const [starNumber, setStarNumber] = useState();
 
-const movieInitial = {
-  genres: [],
-  trailer_url: "",
-  artists: [],
-};
+  setFiveStars.bind(starNumber);
 
-const opts = {
-  height: "300",
-  width: "700",
-  playerVars: {
-    autoplay: 1,
-  },
-};
-
-function Details(props) {
-  const [movie, setMovie] = React.useState(movieInitial);
-  const [starIcons, setStarIcons] = React.useState(starIconsInitial);
 
   const artistClickHandler = (url) => {
     window.location = url;
-  };
-
-  const starClickHandler = (id) => {
-    let starIconList = [];
-    for (let star of starIcons) {
-      let starNode = star;
-      if (star.id <= id) {
-        starNode.color = "yellow";
-      } else {
-        starNode.color = "black";
-      }
-      starIconList.push(starNode);
-    }
-    setStarIcons(starIconList);
   };
 
   useEffect(() => {
@@ -84,7 +68,6 @@ function Details(props) {
       const data = await response.json();
       setMovie(data);
     };
-
     getMovie();
   }, []);
 
@@ -95,16 +78,21 @@ function Details(props) {
         baseUrl={props.baseUrl}
         showBookShowButton
       />
+      
+      {/* Navigation to home */}
       <div className="back">
         <Typography>
-          <Link to="/"> &#60; Back to Home</Link>
+          <Link to="/" > &#60; Back to Home</Link>
         </Typography>
       </div>
+      
+      {/* Movie Poster */}
       <div className="flex-containerDetails">
         <div className="leftDetails">
           <img src={movie.poster_url} alt={movie.title} />
         </div>
 
+        {/* details of Movie */}
         <div className="middleDetails">
           <div>
             <Typography variant="headline" component="h2">
@@ -117,28 +105,35 @@ function Details(props) {
               <span className="bold">Genres: </span> {movie.genres.join(", ")}
             </Typography>
           </div>
+          
           <div>
             <Typography>
               <span className="bold">Duration:</span> {movie.duration}{" "}
             </Typography>
           </div>
+
           <div>
             <Typography>
               <span className="bold">Release Date:</span>{" "}
               {new Date(movie.release_date).toDateString()}{" "}
             </Typography>
           </div>
+          
           <div>
             <Typography>
               <span className="bold"> Rating:</span> {movie.critics_rating}{" "}
+              {movie.rating}{" "}
             </Typography>
           </div>
+
           <div className="marginTop16">
             <Typography>
               <span className="bold">Plot:</span>{" "}
               <a href={movie.wiki_url}>(Wiki Link)</a> {movie.storyline}{" "}
             </Typography>
           </div>
+          
+          {/* Attesting Youtube Trailer */}
           <div className="trailerContainer">
             <Typography>
               <span className="bold">Trailer:</span>
@@ -148,17 +143,31 @@ function Details(props) {
         </div>
 
         <div className="rightDetails">
+          
+          {/* To Rate the movie */}
           <Typography>
             <span className="bold">Rate this movie: </span>
           </Typography>
-          {starIcons.map((star) => (
-            <StarBorderIcon
-              className={star.color}
-              key={"star" + star.id}
-              onClick={() => starClickHandler(star.id)}
-            />
-          ))}
+          <Typography>
+            {!ratingGiven && fiveStars.map((starNumber, key) =>
+            (<StarBorderIcon id={starNumber} onClick=
+              {() => {
+                setStarNumber(starNumber.stateId);
+                setRatingGiven(true);
+              }}
+              key={key} />
+            ))}
 
+
+            {ratingGiven && fiveStars.map((id, key) => {
+              if (id <= starNumber)
+                return (<StarBorderIcon id={id} style={{ color: 'yellow' }} key={key} />)
+              return (<StarBorderIcon id={id} key={key} />)
+            })
+            }
+          </Typography>
+
+          {/* Adding coresponding Artists */}
           <div className="bold marginBottom16 marginTop16">
             <Typography>
               <span className="bold">Artists:</span>
