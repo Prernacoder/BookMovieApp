@@ -27,6 +27,8 @@ const customStyles = {
   },
 };
 
+
+//Tab Container Function
 const TabContainer = function(props) {
   return (
     <Typography component="div" style={{ padding: 0, textAlign: "center" }}>
@@ -35,7 +37,13 @@ const TabContainer = function(props) {
   );
 };
 
+
+//Functional Header Component
+
 function Header(props) {
+
+  //Differenet States to be used
+
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [value, setValue] = useState(0);
   const [usernameRequired, setUsernameRequired] = useState("dispNone");
@@ -59,6 +67,7 @@ function Header(props) {
     sessionStorage.getItem("access-token") == null ? false : true
   );
 
+  //Handler to open the modal
   const openModalHandler = () => {
     setModalIsOpen(true);
     setValue(0);
@@ -78,14 +87,17 @@ function Header(props) {
     setContact("");
   };
 
+  //Handle to close the modal 
   const closeModalHandler = () => {
     setModalIsOpen(false);
   };
 
+  //Handle to change different Tabs
   const tabChangeHandler = (event, value) => {
     setValue(value);
   };
 
+  //Login Functionality
   const loginClickHandler = async () => {
     try {
       username === ""
@@ -117,6 +129,8 @@ function Header(props) {
     }
   };
 
+
+  
   const inputUsernameChangeHandler = (event) => {
     setUsername(event.target.value);
   };
@@ -124,6 +138,8 @@ function Header(props) {
   const inputLoginPasswordChangeHandler = (event) => {
     setLoginPassword(event.target.value);
   };
+
+  //Register Functionality
 
   const registerClickHandler = async () => {
     try {
@@ -192,6 +208,8 @@ function Header(props) {
     setContact(event.target.value);
   };
 
+
+  //Logout Functionality
   const logoutHandler = (event) => {
     sessionStorage.removeItem("uuid");
     sessionStorage.removeItem("access-token");
@@ -199,6 +217,8 @@ function Header(props) {
     setLoggedIn(false);
   };
 
+
+  // Header
   return (
     <div>
       <header className="app-header">
@@ -246,6 +266,8 @@ function Header(props) {
           ""
         )}
       </header>
+
+    {/* Login logout Modal */}
       <Modal
         ariaHideApp={false}
         isOpen={modalIsOpen}
@@ -258,6 +280,8 @@ function Header(props) {
           <Tab label="Register" />
         </Tabs>
 
+
+        {/* Login Form  */}
         {value === 0 && (
           <TabContainer>
             <FormControl required>
@@ -305,6 +329,7 @@ function Header(props) {
           </TabContainer>
         )}
 
+       {/* Signup or Register Form  */}
         {value === 1 && (
           <TabContainer>
             <FormControl required>
@@ -386,11 +411,7 @@ function Header(props) {
             )}
             <br />
             <br />
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={registerClickHandler}
-            >
+            <Button variant="contained"color="primary" onClick={registerClickHandler} >
               REGISTER
             </Button>
           </TabContainer>
