@@ -29,11 +29,11 @@
   margin-bottom: 20px;
 }
 
-.dispNone {
+.Nodisplay {
   display: none;
 }
 
-.dispBlock {
+.blocDisplay {
   display: block;
 }
 

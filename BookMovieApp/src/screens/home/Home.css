@@ -1,3 +1,4 @@
+/* styling upcoming movies scroll bar */
 ::-webkit-scrollbar {
     width: 4px;
   }
@@ -16,11 +17,13 @@
     background: grey;
   }
   
+  /*styling release movie-poster*/
   .movie-poster {
     height: 100%;
     width: auto;
   }
   
+  /*styling the part below upcoming Movies*/
   .flex-container {
     display: flex;
   }
@@ -29,15 +32,18 @@
     margin: 16px;
   }
   
-  .left {
+  /* styling left flex of flex - container */
+  .leftPositioned {
     width: 76%;
   }
   
-  .right {
+  /* styling right flex of flex - container */
+  .rightPositioned {
     padding-top: 20px;
     width: 24%;
   }
   
+  /* styling released movie-poster gridtile */
   .released-movie-grid-item {
     margin: 15px;
   }
