@@ -2310,6 +2310,14 @@ You can find instructions in [Deploying React with Zero Configuration](https://b
 
 Sometimes `npm run build` works locally but fails during deploy via Heroku. Following are the most common cases.
 
+# Team Details Roles and  Responsibility
+
+Header Page and Functionality - Prerna Saxena
+Home Page and Functionality - Sevya sri servani Vajrala
+Details Page and Functionality - Prerna Saxena and Sevya sri servani Vajrala
+
+
+
 ##### "Module not found: Error: Cannot resolve 'file' or 'directory'"
 
 If you get something like this:
