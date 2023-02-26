@@ -21,8 +21,6 @@ const customStyles = {
   },
 };
 
-
-//Tab Container Function
 //Tab Container Function
 const TabContainer = function (props) {
   return (
