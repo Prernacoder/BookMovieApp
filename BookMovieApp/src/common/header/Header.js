@@ -4,15 +4,9 @@ import Button from "@material-ui/core/Button";
 import Modal from "react-modal";
 import { useState } from "react";
 import {
-  FormControl,
-  FormHelperText,
-  Input,
-  InputLabel,
-  Tab,
-  Tabs,
-  Typography,
+  FormControl, FormHelperText, Input,
+  InputLabel, Tab, Tabs, Typography
 } from "@material-ui/core";
-
 import "./Header.css";
 import { Link } from "react-router-dom";
 
@@ -27,7 +21,8 @@ const customStyles = {
   },
 };
 
-const TabContainer = function(props) {
+//Tab Container Function
+const TabContainer = function (props) {
   return (
     <Typography component="div" style={{ padding: 0, textAlign: "center" }}>
       {props.children}
@@ -35,65 +30,74 @@ const TabContainer = function(props) {
   );
 };
 
+//Functional Header Component
 function Header(props) {
+
+  //Differenet States to be used
+
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [value, setValue] = useState(0);
-  const [usernameRequired, setUsernameRequired] = useState("dispNone");
+  const [usernameRequired, setUsernameRequired] = useState("Nodisplay");
   const [username, setUsername] = useState("");
   const [loginPasswordRequired, setLoginPasswordRequired] =
-    useState("dispNone");
+    useState("Nodisplay");
   const [loginPassword, setLoginPassword] = useState("");
-  const [firstnameRequired, setFirstnameRequired] = useState("dispNone");
+  const [firstnameRequired, setFirstnameRequired] = useState("Nodisplay");
   const [firstname, setFirstname] = useState("");
-  const [lastnameRequired, setLastnameRequired] = useState("dispNone");
+  const [lastnameRequired, setLastnameRequired] = useState("Nodisplay");
   const [lastname, setLastname] = useState("");
-  const [emailRequired, setEmailRequired] = useState("dispNone");
+  const [emailRequired, setEmailRequired] = useState("Nodisplay");
   const [email, setEmail] = useState("");
   const [registerPasswordRequired, setRegisterPasswordRequired] =
-    useState("dispNone");
+    useState("Nodisplay");
   const [registerPassword, setRegisterPassword] = useState("");
-  const [contactRequired, setContactRequired] = useState("dispNone");
+  const [contactRequired, setContactRequired] = useState("Nodisplay");
   const [contact, setContact] = useState("");
   const [registrationSuccess, setRegistrationSuccess] = useState(false);
   const [loggedIn, setLoggedIn] = useState(
     sessionStorage.getItem("access-token") == null ? false : true
   );
 
+  //Handler to open the modal
+
   const openModalHandler = () => {
     setModalIsOpen(true);
     setValue(0);
-    setUsernameRequired("dispNone");
+    setUsernameRequired("Nodisplay");
     setUsername("");
-    setLoginPasswordRequired("dispNone");
+    setLoginPasswordRequired("Nodisplay");
     setLoginPassword("");
-    setFirstnameRequired("dispNone");
+    setFirstnameRequired("Nodisplay");
     setFirstname("");
-    setLastnameRequired("dispNone");
+    setLastnameRequired("Nodisplay");
     setLastname("");
-    setEmailRequired("dispNone");
+    setEmailRequired("Nodisplay");
     setEmail("");
-    setRegisterPasswordRequired("dispNone");
+    setRegisterPasswordRequired("Nodisplay");
     setRegisterPassword("");
-    setContactRequired("dispNone");
+    setContactRequired("Nodisplay");
     setContact("");
   };
 
+  //Handle to close the modal 
   const closeModalHandler = () => {
     setModalIsOpen(false);
   };
 
+  //Handle to change different Tabs
   const tabChangeHandler = (event, value) => {
     setValue(value);
   };
 
+  //Login Functionality
   const loginClickHandler = async () => {
     try {
       username === ""
-        ? setUsernameRequired("dispBlock")
-        : setUsernameRequired("dispNone");
+        ? setUsernameRequired("blocDisplay")
+        : setUsernameRequired("Nodisplay");
       loginPassword === ""
-        ? setLoginPasswordRequired("dispBlock")
-        : setLoginPasswordRequired("dispNone");
+        ? setLoginPasswordRequired("blocDisplay")
+        : setLoginPasswordRequired("Nodisplay");
 
       const response = await fetch(`${props.baseUrl}auth/login`, {
         method: "POST",
@@ -125,25 +129,27 @@ function Header(props) {
     setLoginPassword(event.target.value);
   };
 
+  //Register Functionality
+
   const registerClickHandler = async () => {
     try {
       firstname === ""
-        ? setFirstnameRequired("dispBlock")
-        : setFirstnameRequired("dispNone");
+        ? setFirstnameRequired("blocDisplay")
+        : setFirstnameRequired("Nodisplay");
 
       lastname === ""
-        ? setLastnameRequired("dispBlock")
-        : setLastnameRequired("dispNone");
+        ? setLastnameRequired("blocDisplay")
+        : setLastnameRequired("Nodisplay");
 
       email === ""
-        ? setEmailRequired("dispBlock")
-        : setEmailRequired("dispNone");
+        ? setEmailRequired("blocDisplay")
+        : setEmailRequired("Nodisplay");
       registerPassword === ""
-        ? setRegisterPasswordRequired("dispBlock")
-        : setRegisterPasswordRequired("dispNone");
+        ? setRegisterPasswordRequired("blocDisplay")
+        : setRegisterPasswordRequired("Nodisplay");
       contact === ""
-        ? setContactRequired("dispBlock")
-        : setContactRequired("dispNone");
+        ? setContactRequired("blocDisplay")
+        : setContactRequired("Nodisplay");
 
       if (email && firstname && lastname && contact && registerPassword) {
         const dataSignup = JSON.stringify({
@@ -160,7 +166,7 @@ function Header(props) {
           headers: {
             "Content-Type": "application/json",
           },
-          
+
         });
 
         if (response.status === 201) {
@@ -192,13 +198,15 @@ function Header(props) {
     setContact(event.target.value);
   };
 
+  //Logout Functionality
   const logoutHandler = (event) => {
     sessionStorage.removeItem("uuid");
     sessionStorage.removeItem("access-token");
-
+    setLoggedIn(loggedIn);
     setLoggedIn(false);
   };
 
+  // Header
   return (
     <div>
       <header className="app-header">
@@ -246,6 +254,8 @@ function Header(props) {
           ""
         )}
       </header>
+
+      {/* Login logout Modal */}
       <Modal
         ariaHideApp={false}
         isOpen={modalIsOpen}
@@ -258,6 +268,7 @@ function Header(props) {
           <Tab label="Register" />
         </Tabs>
 
+        {/* Login Form  */}
         {value === 0 && (
           <TabContainer>
             <FormControl required>
@@ -305,6 +316,7 @@ function Header(props) {
           </TabContainer>
         )}
 
+        {/* Signup or Register Form  */}
         {value === 1 && (
           <TabContainer>
             <FormControl required>
@@ -349,6 +361,7 @@ function Header(props) {
             </FormControl>
             <br />
             <br />
+
             <FormControl required>
               <InputLabel htmlFor="registerPassword">Password</InputLabel>
               <Input
